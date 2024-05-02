@@ -10,9 +10,9 @@ export default function TopNavBar() {
         <>
             <header className="px-4 md:px-6 py-5 md:py-4 flex items-center justify-between dark:bg-darkGrey bg-white">
                 <div className="flex items-center gap-4">
-                    <Image src={logo} alt="Kanban management app logo"/>
+                    <Image src={logo} alt="Kanban management app logo" className="md:hidden"/>
                     <button className="flex items-center gap-1">
-                        <span>Platform Launch</span>
+                        <span className="text-black dark:text-white text-xl/[25px] font-bold">Platform Launch</span>
                         <Image src={chevronDown} alt="Arrow facing down" className="md:hidden" />
                     </button>
                 </div>

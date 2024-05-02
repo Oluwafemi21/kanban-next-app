@@ -9,7 +9,7 @@ export default function Layout({content}: {content: React.ReactNode}) {
                     <SideBar />
                 </div>
 
-                <section v-else className="w-full max-w-full flex flex-col min-h-screen">
+                <section v-else className="flex-1 flex flex-col min-h-screen">
                     <TopNavBar />
                     <div className='overflow-x-scroll grow h-full'>
                         {content}
