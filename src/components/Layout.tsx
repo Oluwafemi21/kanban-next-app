@@ -5,7 +5,7 @@ export default function Layout({content}: {content: React.ReactNode}) {
     return (
         <>
             <div className="flex w-full h-full dark:text-white text-black">
-                <div className="hidden md:block">
+                <div>
                     <SideBar />
                 </div>
 
