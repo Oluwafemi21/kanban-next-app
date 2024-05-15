@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Layout from '@/components/Layout'
+import { ThemeProvider } from "next-themes"
+
 
 const pjs = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
@@ -16,11 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={pjs.className}>
-        <main className="bg-light dark:bg-dark min-h-screen grid">
-            <Layout content={children} />
-        </main>
+        <ThemeProvider attribute="class">
+            <main className="bg-light dark:bg-dark min-h-screen grid">
+                <Layout content={children} />
+            </main>
+        </ThemeProvider>
       </body>
     </html>
   );
