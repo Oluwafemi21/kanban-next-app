@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EyeIcon from "../icons/EyeIcon";
 import EyeCloseIcon from "../icons/EyeCloseIcon";
 import BoardIcon from '@/components/icons/BoardIcon'
@@ -21,7 +21,7 @@ const outColumns = [
     }
 ]
 
-interface propType {
+type propType = {
     isOpen: boolean
     toggleSidebar:() => void
 }
@@ -42,12 +42,13 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
         }])
     }
 
+    // useEffect(() => {
+    //     // if we are on mobile close the sidebar
+    //   }, [])
     return (
         <nav className="fixed left-0 top-0 bottom-0 h-screen">
             <div className={`flex flex-col pr-6 bg-white dark:bg-darkGrey fixed w-[300px] duration-300 transition-[left] border-r border-lightLines dark:border-darkLines h-screen  ${isOpen ? 'left-0 mr-[300px]' : '-left-80 mr-0'}`}>
                 <div className="pl-8 pt-8">
-                    {/* <Image src={lightLogo} alt="Kanban Logo for light mode" className="d"/>
-                    <Image src={darkLogo} alt="Kanban Logo for dark mode" /> */}
                     <div className="logo w-full mb-[54px] dark:hidden"></div>
                     <div className="dark-logo w-full mb-[54px] hidden dark:block"></div>
                     <p className="uppercase text-mediumGrey text-xs/[15px] tracking-[2.4px] font-bold" >All boards (8)</p>
