@@ -6,8 +6,8 @@ import moreInfo from "@/images/moreInfo.svg"
 import chevronDown from "@/images/chevronDown.svg"
 import darkLogo from "@/images/darkLogo.png"
 import lightLogo from "@/images/lightLogo.png"
-import Modal from "../Modal";
 import { useState } from "react";
+import AddTask from "../Modals/AddTaskModal";
 
 type propType = {
     open: boolean
@@ -15,6 +15,7 @@ type propType = {
 
 export default function TopNavBar({ open }: propType) {
     const [modalOpen, setModalOpen] = useState(false)
+    
     const showDropDown = () => {
         console.log('dropdown showing')
     }
@@ -29,7 +30,8 @@ export default function TopNavBar({ open }: propType) {
 
     const handleClick = () => {
         console.log('modal closed')
-      };
+    };
+    
 
     return (
         <>
@@ -60,9 +62,7 @@ export default function TopNavBar({ open }: propType) {
                 </div>
             </header>
             {modalOpen && (
-                <Modal id='add_task' onClose={closeModal}>
-                    <p>Hey</p>
-                </Modal>
+                <AddTask onClose={closeModal} />
             )}
         </>
     );

@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EyeIcon from "../icons/EyeIcon";
 import EyeCloseIcon from "../icons/EyeCloseIcon";
 import BoardIcon from '@/components/icons/BoardIcon'
@@ -41,10 +41,6 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
             text:"new roadmap"
         }])
     }
-
-    // useEffect(() => {
-    //     // if we are on mobile close the sidebar
-    //   }, [])
     return (
         <nav className="fixed left-0 top-0 bottom-0 h-screen">
             <div className={`flex flex-col pr-6 bg-white dark:bg-darkGrey fixed w-[300px] duration-300 transition-[left] border-r border-lightLines dark:border-darkLines h-screen  ${isOpen ? 'left-0 mr-[300px]' : '-left-80 mr-0'}`}>

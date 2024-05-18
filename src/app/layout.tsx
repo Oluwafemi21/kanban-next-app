@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+// import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Layout from '@/components/Layout'
 import { ThemeProvider } from "next-themes"
 
 
-const pjs = Plus_Jakarta_Sans({ subsets: ['latin'] });
+// const pjs = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "KanBan App",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={pjs.className}>
+      <body className="font-jakarta">
         <ThemeProvider attribute="class">
             <main className="bg-light dark:bg-dark min-h-screen grid">
                 <Layout content={children} />

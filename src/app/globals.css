@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans:200,300,regular,500,600,700,800,200italic,300italic,italic,500italic,600italic,700italic,800italic");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,6 +30,12 @@
   .heading-m{
   @apply font-bold text-[15px]/[19px]
   }
+  .body-l{
+    @apply font-medium text-[13px]/[23px] 
+  }
+  .body-m{
+    @apply font-bold text-xs/[15px]
+  }
   button {
     @apply transition duration-150 ease-in
   }
@@ -36,6 +44,9 @@
     }
   .modal{
     @apply bg-darkGrey/50 h-full w-full grid place-items-center justify-center
+  }
+  input,textarea,button#select{
+    @apply outline-none focus:ring-[2px] focus:ring-primaryPurple ring-offset-0
   }
 }
 
@@ -48,6 +59,25 @@
 .dark-logo{
   height:25px;
   background:url("/darkLogo.png") no-repeat;
+}
+
+
+button#select{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:relative;
+  width:100%;
+}
+
+button#select svg{
+  position:absolute;
+  right:0.8rem;
+  vertical-align:middle
+}
+
+ul#listbox{
+   animation: dropDown .2s ease-in
 }
 
 /* .darkLogo{
@@ -149,5 +179,13 @@ body {
   @keyframes modal-pop{
     0%{
       opacity:0;
+    }
+  }
+
+
+  @keyframes dropDown{
+    0%{
+      opacity:0;
+      top:0;
     }
   }
