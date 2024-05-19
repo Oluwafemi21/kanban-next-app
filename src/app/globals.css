@@ -21,6 +21,8 @@
   .btn-danger{
     @apply btn bg-danger hover:bg-lightRed
   }
+  .btn-large{@apply h-12}
+  .btn-small{@apply h-10}
   .heading-xl{
     @apply font-bold text-2xl/[30px]
   }
@@ -46,7 +48,7 @@
     @apply bg-darkGrey/50 h-full w-full grid place-items-center justify-center
   }
   input,textarea,button#select{
-    @apply outline-none focus:ring-[2px] focus:ring-primaryPurple ring-offset-0
+    @apply outline-none hover:border-primaryPurple hover:focus:border-inherit focus:outline-none focus:ring-[2px] focus:ring-primaryPurple ring-offset-0
   }
 }
 
@@ -189,3 +191,46 @@ body {
       top:0;
     }
   }
+
+  /* button loader */
+  
+.lds-facebook,
+.lds-facebook div {
+  box-sizing: border-box;
+}
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 35px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  width: 5px;
+  background: currentColor;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 0px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 7px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 14px;
+  animation-delay: 0s;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 3px;
+    height: 30px;
+  }
+  50%, 100% {
+    top: 10px;
+    height: 15px;
+  }
+}
+

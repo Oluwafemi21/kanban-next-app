@@ -12,14 +12,14 @@ type inputProps = {
 export default function BaseInput({label,type,name,value,min,max,placeholder,onChange }:inputProps) {
     
     return (
-        <div className="grid space-y-2 text-darkGrey dark:text-white">
+        <div className="grid space-y-2 text-darkGrey dark:text-white w-full">
             {label && (
                 <label htmlFor={name} className="capitalize body-m">
                     {label}
                 </label>
             )}
             <input
-                className="border border-[#828FA340] px-4 py-2 rounded-md body-l font-medium"
+                className="border border-[#828FA340] px-4 py-2 rounded-md body-l font-medium bg-transparent"
                 name={name}
                 type={type}
                 value={value}

@@ -17,7 +17,7 @@ export default function TextArea({label,name,rows,value,placeholder,onChange }:i
                 </label>
             )}
             <textarea
-                className="border border-[#828FA340] px-4 py-2 rounded-md body-l resize-none"
+                className="border border-[#828FA340] px-4 py-2 rounded-md body-l resize-none bg-transparent"
                 name={name}
                 value={value}
                 onChange={(e)=>onChange(e)}
