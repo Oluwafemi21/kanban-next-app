@@ -5,6 +5,7 @@ import EyeCloseIcon from "../icons/EyeCloseIcon";
 import BoardIcon from '@/components/icons/BoardIcon'
 import ColumnNav from "../ColumnNav";
 import ThemeToggler from "../ThemeToggler"
+import AddBoard from "../Modals/AddBoard";
 
 const outColumns = [
     {
@@ -27,6 +28,7 @@ type propType = {
 }
 
 export default function SideBar({ isOpen, toggleSidebar }: propType) {
+    const [addBoardModal, setBoardModalState] = useState(false)
     const [columns,setColumns] = useState([...outColumns])
     const [currentColumn, setCurrentColumn] = useState<string>("platform launch");
 
@@ -41,6 +43,15 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
             text:"new roadmap"
         }])
     }
+
+    const showModal = () => {
+        setBoardModalState(true)
+    }
+
+    const closeModal = () => {
+        setBoardModalState(!addBoardModal)
+    }
+
     return (
         <nav className="fixed left-0 top-0 bottom-0 h-screen">
             <div className={`flex flex-col pr-6 bg-white dark:bg-darkGrey fixed w-[300px] duration-300 transition-[left] border-r border-lightLines dark:border-darkLines h-screen  ${isOpen ? 'left-0 mr-[300px]' : '-left-80 mr-0'}`}>
@@ -54,15 +65,14 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
                     {columns.map(({_id,text}) => {
                         return <ColumnNav text={text} isActive={currentColumn === text ? true : false} changeColumn={ () => changeColumn(_id) } key={_id}/>
                     })}
-                    <button onClick={addColumn} className="hover:bg-primaryPurple/10 w-full text-primaryPurple pl-6 py-4 rounded-r-full flex items-center gap-4">
+                    <button onClick={showModal} className="hover:bg-primaryPurple/10 w-full text-primaryPurple pl-6 py-4 rounded-r-full flex items-center gap-4">
                         <BoardIcon />
                         <span className="heading-m capitalize">+ create new board</span>
                     </button>
                 </div>
                 
                 
-            <div>
-                
+            <div>    
                 {isOpen &&
                     <>
                     <ThemeToggler />
@@ -78,6 +88,10 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
                 </button>}
                 </div>
             </div>
+
+            {addBoardModal && (
+                <AddBoard onClose={closeModal}/>
+            )}
         </nav>
     );
 } 

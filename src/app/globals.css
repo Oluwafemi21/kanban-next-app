@@ -42,10 +42,10 @@
     @apply transition duration-150 ease-in
   }
   .modal-box{
-    @apply rounded p-8 z-20 bg-white dark:bg-dark max-w-lg w-full max-h-max col-span-1 row-span-1
+    @apply bg-white dark:bg-darkGrey rounded max-w-lg w-full max-h-[90vh] overflow-y-scroll p-8 space-y-6
     }
   .modal{
-    @apply bg-darkGrey/50 h-full w-full grid place-items-center justify-center
+    @apply fixed z-10 inset-0 bg-darkBg/70 lg:w-full px-4 h-full flex items-center justify-center transition-all duration-200
   }
   input,textarea,button#select{
     @apply outline-none hover:border-primaryPurple hover:focus:border-inherit focus:outline-none focus:ring-[2px] focus:ring-primaryPurple ring-offset-0
@@ -134,53 +134,19 @@ body {
 }
 
 .modal {
-    pointer-events: none;
-    position: fixed;
-    display:grid;
-    place-items:center;
-    justify-content:center;
-    inset:0;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-    overscroll-behavior: contain;
-    z-index: 999;
-    color: inherit;
-    transition-duration: .2s;
-    transition-timing-function: cubic-bezier(0,0,.2,1);
-    transition-property: transform,opacity,visibility;
-    overflow-y: hidden;
+    animation: modal-pop .2s ease-in-out
   }
 
-  .modal:target, .modal[open]{
-    pointer-events: auto;
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .modal-backdrop{
-    z-index: -1;
-    position:absolute;
-    color: transparent;
-    height:100%;
-    width:100%;
-    pointer-events:auto;
-  }
-
-  .modal-backdrop button{
-    position:absolute;
-    inset:0;
-  }
-
-  .modal::backdrop{
-    background-color:#000;
-    opacity:50%;
-    animation:modal-pop .2s ease-out;
-  }
+  
 
   @keyframes modal-pop{
     0%{
       opacity:0;
+      transform:translateY(-10vh)
+    }
+    100%{
+      opacity:1;
+      transform:translateY(0)
     }
   }
 

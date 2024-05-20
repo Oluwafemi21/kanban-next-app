@@ -42,7 +42,7 @@ export default function AddTask({ onClose }: props) {
     }
 
     const removeSubtask = (index: number) => {
-        if (index < 2) return;
+        if (index < 1) return;
         setSubtasks((subtasks) => subtasks.filter((_, i) => i !== index))
     }
 
@@ -61,13 +61,12 @@ export default function AddTask({ onClose }: props) {
             status,
             subtasks,
         }
-        console.log(task);
     }
     
     return (
         <Modal id='add_task' onClose={onClose}>
             <h2 className="heading-l">Add New Task</h2>
-            <BaseInput label="title" placeholder="e.g Take coffee break" value={title} onChange={(e) => bindTitle(e)}/>
+            <BaseInput label="title" placeholder="e.g. Take coffee break" value={title} onChange={(e) => bindTitle(e)}/>
             <TextArea label="description" placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little."
             value={description} rows={3} onChange={(e) => bindDescription(e)}
             />
@@ -88,9 +87,6 @@ export default function AddTask({ onClose }: props) {
                 <LoadingButton text="+ add new subtask" variant="secondary" size="small" action={addNewSubtask} />
             </div>
             <Select label="Status" options={options} selected={status} onSelect={(option)=> updateStatus(option)} />
-            <p>Title: { title }</p>
-            <p>Description: {description}</p>
-            <p>Status: {status}</p>
             <div className="w-full grid">
                 <LoadingButton text="create task" variant="primary" size="small" loading={loading} action={createTask} />
             </div>
