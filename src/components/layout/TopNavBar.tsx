@@ -8,6 +8,8 @@ import darkLogo from "@/images/darkLogo.png"
 import lightLogo from "@/images/lightLogo.png"
 import { useState } from "react";
 import AddTask from "../Modals/AddTask";
+import Board from "../Modals/Board";
+import Delete from "../Modals/Delete"
 
 type propType = {
     open: boolean
@@ -15,6 +17,9 @@ type propType = {
 
 export default function TopNavBar({ open }: propType) {
     const [addTaskModal, setTaskModalState] = useState(false)
+    const [isDropdownOpen, setDropdownOpen] = useState(false)
+    const [showEditModal,setShowEditModal] = useState(false)
+    const [showDeleteModal,setShowDeleteModal] = useState(false)
     
     const showDropDown = () => {
         console.log('dropdown showing')
@@ -26,12 +31,23 @@ export default function TopNavBar({ open }: propType) {
 
     const closeModal = () => {
         setTaskModalState(false)
+        setShowEditModal(false)
+        setShowDeleteModal(false)
     }
 
     const handleClick = () => {
         console.log('modal closed')
     };
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!isDropdownOpen)
+    }
     
+    const handleSelect = (action:string) => {
+        if(action === 'edit') setShowEditModal(true)
+        if (action === 'delete') setShowDeleteModal(true)
+        toggleDropdown()
+    }
 
     return (
         <>
@@ -51,19 +67,34 @@ export default function TopNavBar({ open }: propType) {
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center gap-4 md:pr-6">
-                    <button onClick={showModal} className="btn btn-primary text-[13px]/5 font-bold px-[18px] py-2.5 md:px-6 md:pt-[15px] md:pb-3.5">
-                        <span className="hidden md:block">+Add New Task</span>
+                <div className="flex items-center gap-6 md:pr-8">
+                    <button onClick={showModal} className="btn btn-primary heading-m px-[18px] py-2.5 md:px-[25px] md:pt-[15px] md:pb-3.5">
+                        <span className="hidden md:block">+ Add New Task</span>
                         <AddIcon styling="md:hidden"/>
                     </button>
-                    <button>
-                        <Image src={moreInfo} alt="More info button" />
-                    </button>
+                    <div>
+                        <button onClick={toggleDropdown} role="combobox" aria-controls="listbox" aria-haspopup="listbox" tabIndex={0} aria-expanded="false">
+                            <Image src={moreInfo} alt="More info button" />
+                        </button>
+                        <ul role="listbox" id="listbox" className={`drop-shadow bg-white dark:bg-darkBg transition-[top,display] duration-300 ease-in-out rounded-md absolute z-20 text-white space-y-4 right-6 w-[192px] top-20 max-h-36 will-change-auto p-4 ${isDropdownOpen ? 'block will-change-transform': 'hidden' }`}>
+                            <li role="listitem" onClick={()=>handleSelect('edit')} className="body-l capitalize w-full cursor-pointer snap-start text-mediumGrey dark:hover:text-white">Edit Board</li>
+                            <li role="listitem" onClick={() => handleSelect('delete')} className="text-danger hover:text-lightRed body-l capitalize w-full cursor-pointer">
+                             Delete Board
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </header>
             {addTaskModal && (
                 <AddTask onClose={closeModal} />
             )}
+            {showEditModal && (
+                <Board type="edit" onClose={closeModal} />
+            )}
+            {showDeleteModal && (
+                <Delete type="board" title="Platform launch" onClose={closeModal} />
+            )}
+            
         </>
     );
 }

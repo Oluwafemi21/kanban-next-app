@@ -20,7 +20,7 @@ export default function Home() {
             <>
               <div className="flex flex-col items-center justify-center max-w-xs md:max-w-[459px] lg:max-w-none text-center mx-auto gap-5 min-h-full space-y-6">
                   <p className="text-mediumGrey heading-l">This board is empty. Create a new column to get started.</p>
-                  <button onClick={editBoard} className="heading-m btn btn-primary py-3.5 px-4">+Add New Column</button>
+                  <button onClick={editBoard} className="heading-m btn-primary py-3.5 px-4">+ Add New Column</button>
               </div>
             </>
       )}

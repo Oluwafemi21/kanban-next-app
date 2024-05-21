@@ -1,14 +1,15 @@
-import {useState} from "react";
+import { useState} from "react";
 import BaseInput from "../BaseInput";
 import Modal from "../BaseModal";
 import LoadingButton from "../LoadingButton";
 
 type props = {
+    type:'add' | 'edit'
     onClose:() => void
 }
 
 
-export default function AddBoard({ onClose }: props) {
+export default function Board({ type,onClose }: props) {
     const [boardName, setBoardName] = useState("")
     const [columns, setColumns] = useState([
         "",
@@ -32,7 +33,7 @@ export default function AddBoard({ onClose }: props) {
         setColumns((columns) => columns.filter((_, i) => i !== index))
     }
 
-    const addNewColumn= () => {
+    const addNewColumn = () => {
         setColumns([...columns,''])
     }
 
@@ -41,11 +42,22 @@ export default function AddBoard({ onClose }: props) {
             boardName,
             columns,
         }
+    } 
+
+    const updateBoard = () => {
+        console.log('updating')
+    }
+
+    const handleBoardSave = () => {
+        // if (type === 'add')
+        //     createBoard()
+        // updateBoard()
+        onClose()
     }
     
     return (
         <Modal id='add_task' onClose={onClose}>
-            <h2 className="heading-l">Add New Board</h2>
+            <h2 className="heading-l">{type === 'add' ? 'Add New' : 'Edit'} Board</h2>
             <BaseInput label="board name" placeholder="e.g. Web Design" value={boardName} onChange={(e) => bindBoardName(e)}/>
             
             <div className="grid space-y-2">
@@ -65,7 +77,7 @@ export default function AddBoard({ onClose }: props) {
                 <LoadingButton text="+ add new column" variant="secondary" size="small" action={addNewColumn} />
             </div>
             <div className="w-full grid">
-                <LoadingButton text="create board" variant="primary" size="small" loading={loading} action={createBoard} />
+                <LoadingButton text={type === 'add' ? 'create board' : 'save changes'} variant="primary" size="small" loading={loading} action={handleBoardSave} />
             </div>
         </Modal>
     )

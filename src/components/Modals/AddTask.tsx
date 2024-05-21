@@ -51,6 +51,7 @@ export default function AddTask({ onClose }: props) {
     }
 
     const addNewSubtask = () => {
+        if(!subtasks[0].length || !subtasks[subtasks.length - 1].length) return
         setSubtasks([...subtasks,''])
     }
 

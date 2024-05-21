@@ -7,7 +7,7 @@
 
 @layer components{
   .btn{
-    @apply rounded-full transition-colors duration-150 ease-in-out
+    @apply rounded-full transition-colors duration-150 ease-in-out text-[13px]/[23px] font-bold
   }
   .icon-btn{
     @apply flex items-center gap-1
@@ -19,7 +19,7 @@
     @apply btn dark:bg-white text-primaryPurple bg-[#635FC71A] hover:bg-[#635FC740]
   }
   .btn-danger{
-    @apply btn bg-danger hover:bg-lightRed
+    @apply btn bg-danger hover:bg-lightRed text-white
   }
   .btn-large{@apply h-12}
   .btn-small{@apply h-10}

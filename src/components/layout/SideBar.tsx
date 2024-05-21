@@ -5,7 +5,7 @@ import EyeCloseIcon from "../icons/EyeCloseIcon";
 import BoardIcon from '@/components/icons/BoardIcon'
 import ColumnNav from "../ColumnNav";
 import ThemeToggler from "../ThemeToggler"
-import AddBoard from "../Modals/AddBoard";
+import Board from "../Modals/Board";
 
 const outColumns = [
     {
@@ -90,7 +90,7 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
             </div>
 
             {addBoardModal && (
-                <AddBoard onClose={closeModal}/>
+                <Board type="add" onClose={closeModal}/>
             )}
         </nav>
     );
