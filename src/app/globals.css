@@ -32,6 +32,9 @@
   .heading-m{
   @apply font-bold text-[15px]/[19px]
   }
+  .heading-s{
+    @apply font-bold text-xs tracking-[0.15em]
+  }
   .body-l{
     @apply font-medium text-[13px]/[23px] 
   }
@@ -52,6 +55,9 @@
   }
 }
 
+.task-card{
+  box-shadow: 0px 4px 6px 0px #364E7E1A;
+}
 
 .logo{
   height:25px;
@@ -133,7 +139,7 @@ body {
   }
 }
 
-.modal {
+.modal-box {
     animation: modal-pop .2s ease-in-out
   }
 

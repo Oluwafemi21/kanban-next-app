@@ -15,7 +15,7 @@ export default function Layout({content}: {content: React.ReactNode}) {
                 <section className="flex-1 flex flex-col min-h-screen">
                     <SideBar isOpen={isSidebarOpen} toggleSidebar={handleSidebarView} />
                     <TopNavBar open={isSidebarOpen} />
-                    <div className={`overflow-x-scroll grow h-full ${isSidebarOpen ? 'md:ml-24' : null}`}>
+                    <div className={`overflow-x-scroll grow h-full ${isSidebarOpen ? 'lg:ml-[300px]' : null}`}>
                         {content}
                     </div>
                 </section>
