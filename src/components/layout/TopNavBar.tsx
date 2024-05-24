@@ -15,6 +15,7 @@ type propType = {
     open: boolean
 }
 
+
 export default function TopNavBar({ open }: propType) {
     const [addTaskModal, setTaskModalState] = useState(false)
     const [isDropdownOpen, setDropdownOpen] = useState(false)
@@ -49,6 +50,7 @@ export default function TopNavBar({ open }: propType) {
         toggleDropdown()
     }
 
+
     return (
         <>
             <header className="flex items-center justify-between dark:bg-darkGrey bg-white py-5 pr-6 pl-4 md:p-0">
@@ -72,7 +74,7 @@ export default function TopNavBar({ open }: propType) {
                         <span className="hidden md:block">+ Add New Task</span>
                         <AddIcon styling="md:hidden"/>
                     </button>
-                    <div>
+                    <div className="group">
                         <button onClick={toggleDropdown} role="combobox" aria-controls="listbox" aria-haspopup="listbox" tabIndex={0} aria-expanded="false">
                             <Image src={moreInfo} alt="More info button" />
                         </button>

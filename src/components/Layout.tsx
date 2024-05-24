@@ -11,14 +11,16 @@ export default function Layout({content}: {content: React.ReactNode}) {
 
     return (
         <>
-            <div className="flex w-full h-full dark:text-white text-black">
-                <section className="flex-1 flex flex-col min-h-screen overflow-y-hidden">
-                    <SideBar isOpen={isSidebarOpen} toggleSidebar={handleSidebarView} />
-                    <TopNavBar open={isSidebarOpen} />
-                    <div className={`bg-light dark:bg-dark overflow-y-scroll overflow-x-auto scroll-mt-6 snap-y grow max-h-[calc(100vh-95px)] ${isSidebarOpen ? 'lg:ml-[300px]' : ''}`}>
+            <div className="min-h-screen  grid">
+                <div className="dark:text-white text-black bg-light dark:bg-dark">
+                    <section className="overflow-hidden w-screen">
+                        <SideBar isOpen={isSidebarOpen} toggleSidebar={handleSidebarView} />
+                        <TopNavBar open={isSidebarOpen} />
+                    </section>
+                    <div className={`w-full ${isSidebarOpen ? 'lg:ml-[300px]' : ''}`}>
                         {content}
                     </div>
-                </section>
+                </div>
             </div>
         </>
     );

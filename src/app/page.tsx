@@ -98,6 +98,24 @@ export default function Home() {
               isCompleted:false
             },
           ]
+        },
+        {
+          title: 'Build UI for search',
+          status:"todo",
+          subtasks: [
+            {
+              title: 'Design the search',
+              isCompleted:true,
+            },
+            {
+              title: 'Code the search',
+              isCompleted:false
+            },
+            {
+              title: 'Test the search',
+              isCompleted:false
+            },
+          ]
         }
       ]
     },
@@ -146,6 +164,29 @@ export default function Home() {
           ]
         } 
       ]
+    },
+    {
+      name: 'about-to',
+      tasks: [
+        {
+          title: 'Do this',
+          status:"done",
+          subtasks: [
+            {
+              title: 'Design the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Code the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Test the page',
+              isCompleted:false,
+            },
+          ]
+        } 
+      ]
     }
   ])
 
@@ -159,8 +200,8 @@ export default function Home() {
   }
 
   return (
-    <div className="h-full w-full">
-        <div className="p-4 md:p-6">
+    <div className="max-h-[calc(100vh-80px)] overflow-y-scroll w-screen">
+        <div className="">
           {!columns.length && (
               <>
                 <div className="flex flex-col items-center justify-center max-w-xs md:max-w-[459px] lg:max-w-none text-center mx-auto gap-5 min-h-full space-y-6">
@@ -171,12 +212,12 @@ export default function Home() {
         )}
         {
           columns.length && (
-            <div className="flex gap-6">
+            <div className="grid grid-flow-col gap-6 p-4 md:p-6 overflow-x-scroll snap-x">
               {columns.map((column,index) => {
                 return <TaskColumn task={column} key={index} />
               })}
-              <section className="relative mt-10 new-column w-[280px] grid place-items-center min-h-[50vh] rounded-lg">
-                <button className="absolute inset-0">
+              <section className="relative mt-10 new-column w-[280px] grid place-items-center min-h-[50vh] rounded-lg scroll-ms-6 snap-start">
+                <button className="absolute inset-0" onClick={editBoard}>
                   <p className="heading-xl text-mediumGrey">+ New Column</p>
                 </button>
               </section>

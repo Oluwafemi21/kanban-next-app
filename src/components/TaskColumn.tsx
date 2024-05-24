@@ -24,7 +24,7 @@ export default function TaskColumn({task}:props) {
         return count
     }
     return <>
-        <section className="space-y-6 min-w-[280px] h-full">
+        <section className="space-y-6 min-w-[280px] h-full snap-start scroll-ms-6">
             <div className="flex items-center gap-3">
                 <div className={`h-[15px] w-[15px] rounded-full bg-[#49C4E5]`}></div>
                 <h4 className="text-mediumGrey dark:text-white heading-s uppercase">{task.name} ({task.tasks.length})</h4>
@@ -34,7 +34,7 @@ export default function TaskColumn({task}:props) {
                     return (
                         <div key={index}>
                             <article className="task-card group flex flex-col gap-2 bg-white dark:bg-darkGrey px-4 py-6 rounded-lg cursor-pointer max-w-[280px]">
-                                <p className="heading-m text-black dark:text-white">{title}</p>
+                                <p className="heading-m text-black dark:text-white group-hover:text-primaryPurple">{title}</p>
                                 <span className="body-m text-mediumGrey">
                                 {completedTaskCount(subtasks)} of {subtasks.length} subtasks 
                                 </span>
