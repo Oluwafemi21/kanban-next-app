@@ -7,302 +7,148 @@ export default function Home() {
   const [addColumModal, setColumModalState] = useState(false)
   const [columns, setColumns] = useState([
     {
-      title: 'todo',
+      name: 'todo',
       tasks: [
         {
           title: 'Build UI for onboarding flow',
+          status:"todo",
           subtasks: [
             {
               title: 'Design the page',
-              status:'todo'
+              isCompleted:false,
             },
             {
               title: 'Code the page',
-              status:'todo'
+              isCompleted:false,
             },
             {
               title: 'Test the page',
-              status:'todo'
+              isCompleted:false,
+            },
+          ]
+        },
+        {
+          title: 'Build UI for onboarding flow',
+          status:"todo",
+          subtasks: [
+            {
+              title: 'Design the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Code the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Test the page',
+              isCompleted:false,
+            },
+          ]
+        },
+        {
+          title: 'Build UI for onboarding flow',
+          status:"todo",
+          subtasks: [
+            {
+              title: 'Design the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Code the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Test the page',
+              isCompleted:false,
+            },
+          ]
+        },
+        {
+          title: 'Build UI for onboarding flow',
+          status:"todo",
+          subtasks: [
+            {
+              title: 'Design the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Code the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Test the page',
+              isCompleted:false,
             },
           ]
         },
         {
           title: 'Build UI for search',
+          status:"todo",
           subtasks: [
             {
               title: 'Design the search',
-              status:'done'
+              isCompleted:true,
             },
             {
               title: 'Code the search',
-              status:'todo'
+              isCompleted:false
             },
             {
               title: 'Test the search',
-              status:'todo'
+              isCompleted:false
             },
           ]
         }
+      ]
+    },
+    {
+      name: 'doing',
+      tasks: [
+        {
+          title: 'Build UI for onboarding flow',
+          status:'doing',
+          subtasks: [
+            {
+              title: 'Design the page',
+              isCompleted:false
+            },
+            {
+              title: 'Code the page',
+              isCompleted:false
+            },
+            {
+              title: 'Test the page',
+              isCompleted:false
+            },
+          ]
+        },
+      ]
+    },
+    {
+      name: 'done',
+      tasks: [
+        {
+          title: 'Do this',
+          status:"done",
+          subtasks: [
+            {
+              title: 'Design the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Code the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Test the page',
+              isCompleted:false,
+            },
+          ]
+        } 
       ]
     }
   ])
 
-
-  const testColumns = [
-    {
-      title: 'todo',
-      tasks: [
-        {
-          title: 'Build UI for onboarding flow',
-          subtasks: [
-            {
-              title: 'Design the page',
-              status:'todo'
-            },
-            {
-              title: 'Code the page',
-              status:'todo'
-            },
-            {
-              title: 'Test the page',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for search',
-          subtasks: [
-            {
-              title: 'Design the search',
-              status:'done'
-            },
-            {
-              title: 'Code the search',
-              status:'todo'
-            },
-            {
-              title: 'Test the search',
-              status:'todo'
-            },
-          ]
-        }
-      ]
-    },
-    {
-      title: 'doing',
-      tasks: [
-        {
-          title: 'Build UI for onboarding flow',
-          subtasks: [
-            {
-              title: 'Design the page',
-              status:'todo'
-            },
-            {
-              title: 'Code the page',
-              status:'todo'
-            },
-            {
-              title: 'Test the page',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for search',
-          subtasks: [
-            {
-              title: 'Design the search',
-              status:'todo'
-            },
-            {
-              title: 'Code the search',
-              status:'todo'
-            },
-            {
-              title: 'Test the search',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for onboarding flow',
-          subtasks: [
-            {
-              title: 'Design the page',
-              status:'todo'
-            },
-            {
-              title: 'Code the page',
-              status:'todo'
-            },
-            {
-              title: 'Test the page',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for search',
-          subtasks: [
-            {
-              title: 'Design the search',
-              status:'todo'
-            },
-            {
-              title: 'Code the search',
-              status:'todo'
-            },
-            {
-              title: 'Test the search',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for onboarding flow',
-          subtasks: [
-            {
-              title: 'Design the page',
-              status:'todo'
-            },
-            {
-              title: 'Code the page',
-              status:'todo'
-            },
-            {
-              title: 'Test the page',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for search',
-          subtasks: [
-            {
-              title: 'Design the search',
-              status:'todo'
-            },
-            {
-              title: 'Code the search',
-              status:'todo'
-            },
-            {
-              title: 'Test the search',
-              status:'todo'
-            },
-          ]
-        }
-      ]
-    },
-    {
-      title: 'done',
-      tasks: [
-        {
-          title: 'Build UI for onboarding flow',
-          subtasks: [
-            {
-              title: 'Design the page',
-              status:'todo'
-            },
-            {
-              title: 'Code the page',
-              status:'todo'
-            },
-            {
-              title: 'Test the page',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for search',
-          subtasks: [
-            {
-              title: 'Design the search',
-              status:'todo'
-            },
-            {
-              title: 'Code the search',
-              status:'todo'
-            },
-            {
-              title: 'Test the search',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for onboarding flow',
-          subtasks: [
-            {
-              title: 'Design the page',
-              status:'todo'
-            },
-            {
-              title: 'Code the page',
-              status:'todo'
-            },
-            {
-              title: 'Test the page',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for search',
-          subtasks: [
-            {
-              title: 'Design the search',
-              status:'todo'
-            },
-            {
-              title: 'Code the search',
-              status:'todo'
-            },
-            {
-              title: 'Test the search',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for onboarding flow',
-          subtasks: [
-            {
-              title: 'Design the page',
-              status:'todo'
-            },
-            {
-              title: 'Code the page',
-              status:'todo'
-            },
-            {
-              title: 'Test the page',
-              status:'todo'
-            },
-          ]
-        },
-        {
-          title: 'Build UI for search',
-          subtasks: [
-            {
-              title: 'Design the search',
-              status:'todo'
-            },
-            {
-              title: 'Code the search',
-              status:'todo'
-            },
-            {
-              title: 'Test the search',
-              status:'todo'
-            },
-          ]
-        }
-      ]
-    }
-  ]
   
   const editBoard = () => {
     setColumModalState(true)
@@ -313,7 +159,7 @@ export default function Home() {
   }
 
   return (
-    <div className="h-full">
+    <div className="h-full w-full">
         <div className="p-4 md:p-6">
           {!columns.length && (
               <>
@@ -325,11 +171,16 @@ export default function Home() {
         )}
         {
           columns.length && (
-            <>
-              {columns.map((task,index) => {
-                return <TaskColumn task={task} key={index}/>
+            <div className="flex gap-6">
+              {columns.map((column,index) => {
+                return <TaskColumn task={column} key={index} />
               })}
-            </>
+              <section className="relative mt-10 new-column w-[280px] grid place-items-center min-h-[50vh] rounded-lg">
+                <button className="absolute inset-0">
+                  <p className="heading-xl text-mediumGrey">+ New Column</p>
+                </button>
+              </section>
+            </div>
           )
         }
         {addColumModal && (

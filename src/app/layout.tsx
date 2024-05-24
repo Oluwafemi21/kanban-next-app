@@ -19,9 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-jakarta">
+      <body className="font-jakarta overflow-hidden">
         <ThemeProvider attribute="class">
-            <main className="bg-light dark:bg-dark min-h-screen grid">
+            <main className="min-h-screen grid">
                 <Layout content={children} />
             </main>
         </ThemeProvider>

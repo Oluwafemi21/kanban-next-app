@@ -53,6 +53,9 @@
   input,textarea,button#select{
     @apply outline-none hover:border-primaryPurple hover:focus:border-inherit focus:outline-none focus:ring-[2px] focus:ring-primaryPurple ring-offset-0
   }
+  .new-column{
+    @apply bg-gradient-to-r from-[#E9EFFA] from-100% to-[#E9EFFA] to-50%  dark:from-[#2B2C37] dark:from-25% dark:to-[#2B2C37] dark:to-[12.5%]
+  }
 }
 
 .task-card{
