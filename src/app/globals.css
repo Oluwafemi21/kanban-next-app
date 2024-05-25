@@ -48,7 +48,7 @@
     @apply bg-white dark:bg-darkGrey rounded max-w-lg w-full max-h-[90vh] overflow-y-scroll p-8 space-y-6
     }
   .modal{
-    @apply fixed z-10 inset-0 bg-darkBg/70 lg:w-full px-4 h-full flex items-center justify-center transition-all duration-200
+    @apply fixed z-30 inset-0 bg-darkBg/70 lg:w-full px-4 h-full flex items-center justify-center transition-all duration-200
   }
   input,textarea,button#select{
     @apply outline-none hover:border-primaryPurple hover:focus:border-inherit focus:outline-none focus:ring-[2px] focus:ring-primaryPurple ring-offset-0
@@ -56,6 +56,11 @@
   .new-column{
     @apply bg-gradient-to-r from-[#E9EFFA] from-100% to-[#E9EFFA] to-50%  dark:from-[#2B2C37] dark:from-25% dark:to-[#2B2C37] dark:to-[12.5%]
   }
+}
+
+.cards{
+  display: flex; /* Make the container a flexbox */
+  overflow-x: scroll; /* Enable horizontal scrolling */
 }
 
 .task-card{

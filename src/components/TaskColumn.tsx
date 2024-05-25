@@ -1,21 +1,14 @@
+import {Task,SubTask} from '@/types/Task'
 type props = {
     task: {
         name: string,
         tasks: Task[]
-    }
-}
-interface Task  {
-    title: string,
-    status:string,
-    subtasks: SubTask[]
+    },
+    openTask:(task:Task)=>void
 }
 
-interface SubTask  {
-    title: string,
-    isCompleted:boolean
-}
 
-export default function TaskColumn({task}:props) {
+export default function TaskColumn({task,openTask}:props) {
     const completedTaskCount = (tasks: SubTask[]) => {
         let count = 0
         tasks.forEach((task) => {
@@ -30,13 +23,13 @@ export default function TaskColumn({task}:props) {
                 <h4 className="text-mediumGrey dark:text-white heading-s uppercase">{task.name} ({task.tasks.length})</h4>
             </div>
             <div className="space-y-5">
-                {task.tasks.map(({title,subtasks},index) => {
+                {task.tasks.map((task,index) => {
                     return (
-                        <div key={index}>
-                            <article className="task-card group flex flex-col gap-2 bg-white dark:bg-darkGrey px-4 py-6 rounded-lg cursor-pointer max-w-[280px]">
-                                <p className="heading-m text-black dark:text-white group-hover:text-primaryPurple">{title}</p>
+                        <div role="button" key={index} onClick={()=>openTask(task)}>
+                            <article className="task-card group flex flex-col gap-2 bg-white dark:bg-darkGrey px-4 py-6 rounded-lg cursor-pointer">
+                                <p className="heading-m text-black dark:text-white group-hover:text-primaryPurple">{task.title}</p>
                                 <span className="body-m text-mediumGrey">
-                                {completedTaskCount(subtasks)} of {subtasks.length} subtasks 
+                                {completedTaskCount(task.subtasks)} of {task.subtasks.length} subtasks 
                                 </span>
                             </article>
                         </div>

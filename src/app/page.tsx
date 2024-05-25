@@ -1,16 +1,69 @@
 "use client"
-import AddColumn from "@/components/Modals/AddColumn";
-import TaskColumn from "@/components/TaskColumn";
 import { useState } from "react";
+import {Task} from '@/types/Task'
+import TaskColumn from "@/components/TaskColumn";
+import SubTasks from "@/components/Modals/SubTasks";
+import AddTask from "@/components/Modals/AddTask";
+import Delete from "@/components/Modals/Delete";
+import Board from "@/components/Modals/Board";
+
 
 export default function Home() {
   const [addColumModal, setColumModalState] = useState(false)
+  const [viewSubtaskModal,setSubtaskModal] = useState(false)
+  const [editTask,setEditTask] = useState(false)
+  const [deleteTask, setDeleteTask] = useState(false)
+  const [currentSubtask, setSubTask] = useState<Task>({
+    title: "",
+    description:"",
+    status: "",
+    subtasks:[]
+  })
   const [columns, setColumns] = useState([
     {
       name: 'todo',
       tasks: [
         {
           title: 'Build UI for onboarding flow',
+          description:"",
+          status: "todo",
+          subtasks: [
+            {
+              title: 'Design the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Code the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Test the page',
+              isCompleted:false,
+            },
+          ]
+        },
+        {
+          title: 'Build UI for onboarding flow',
+          description:"",
+          status: "todo",
+          subtasks: [
+            {
+              title: 'Design the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Code the page',
+              isCompleted:false,
+            },
+            {
+              title: 'Test the page',
+              isCompleted:false,
+            },
+          ]
+        },
+        {
+          title: 'Build UI for onboarding flow',
+          description:"",
           status:"todo",
           subtasks: [
             {
@@ -29,42 +82,7 @@ export default function Home() {
         },
         {
           title: 'Build UI for onboarding flow',
-          status:"todo",
-          subtasks: [
-            {
-              title: 'Design the page',
-              isCompleted:false,
-            },
-            {
-              title: 'Code the page',
-              isCompleted:false,
-            },
-            {
-              title: 'Test the page',
-              isCompleted:false,
-            },
-          ]
-        },
-        {
-          title: 'Build UI for onboarding flow',
-          status:"todo",
-          subtasks: [
-            {
-              title: 'Design the page',
-              isCompleted:false,
-            },
-            {
-              title: 'Code the page',
-              isCompleted:false,
-            },
-            {
-              title: 'Test the page',
-              isCompleted:false,
-            },
-          ]
-        },
-        {
-          title: 'Build UI for onboarding flow',
+          description:"",
           status:"todo",
           subtasks: [
             {
@@ -83,6 +101,7 @@ export default function Home() {
         },
         {
           title: 'Build UI for search',
+          description:"",
           status:"todo",
           subtasks: [
             {
@@ -101,6 +120,7 @@ export default function Home() {
         },
         {
           title: 'Build UI for search',
+          description:"",
           status:"todo",
           subtasks: [
             {
@@ -124,6 +144,7 @@ export default function Home() {
       tasks: [
         {
           title: 'Build UI for onboarding flow',
+          description:"",
           status:'doing',
           subtasks: [
             {
@@ -147,6 +168,7 @@ export default function Home() {
       tasks: [
         {
           title: 'Do this',
+          description:"",
           status:"done",
           subtasks: [
             {
@@ -170,6 +192,7 @@ export default function Home() {
       tasks: [
         {
           title: 'Do this',
+          description:"",
           status:"done",
           subtasks: [
             {
@@ -195,39 +218,60 @@ export default function Home() {
     setColumModalState(true)
   }
 
-  const closeModal = () => {
-    setColumModalState(!addColumModal)
+
+  const toggleModal = (modal:string) => {
+    if(modal === 'view_subtask') setSubtaskModal(!viewSubtaskModal)
+    if(modal === 'add_task') setColumModalState(!addColumModal)
+    if(modal === 'edit_task') setEditTask(!editTask)
+    if(modal === 'delete_task') setDeleteTask(!deleteTask)
   }
 
+  const doThis = (task: Task) => {
+    setSubTask(task)
+    console.log(task)
+    setSubtaskModal(true)
+  }
+
+
   return (
-    <div className="max-h-[calc(100vh-80px)] overflow-y-scroll w-screen">
-        <div className="">
-          {!columns.length && (
-              <>
-                <div className="flex flex-col items-center justify-center max-w-xs md:max-w-[459px] lg:max-w-none text-center mx-auto gap-5 min-h-full space-y-6">
-                    <p className="text-mediumGrey heading-l">This board is empty. Create a new column to get started.</p>
-                    <button onClick={editBoard} className="heading-m btn-primary py-3.5 px-4">+ Add New Column</button>
-                </div>
-              </>
-        )}
+   <>
         {
           columns.length && (
-            <div className="grid grid-flow-col gap-6 p-4 md:p-6 overflow-x-scroll snap-x">
+            <div className="max-h-[calc(100vh-80px)] overflow-scroll cards gap-6 snap-x p-4 md:p-6 w-full">
               {columns.map((column,index) => {
-                return <TaskColumn task={column} key={index} />
+                return <TaskColumn task={column} key={index} openTask={(task)=>doThis(task)}/>
               })}
-              <section className="relative mt-10 new-column w-[280px] grid place-items-center min-h-[50vh] rounded-lg scroll-ms-6 snap-start">
-                <button className="absolute inset-0" onClick={editBoard}>
+              <section className="box-content mt-10 sticky new-column min-w-[280px] place-items-center rounded-lg">
+                <button className="h-full w-[280px]" onClick={editBoard}>
                   <p className="heading-xl text-mediumGrey">+ New Column</p>
                 </button>
               </section>
             </div>
           )
         }
-        {addColumModal && (
-          <AddColumn onClose={closeModal} />
+             
+        {!columns.length && (
+              <div className="p-4 md:p-6">
+                <div className="flex flex-col items-center justify-center max-w-xs md:max-w-[459px] lg:max-w-none text-center mx-auto gap-5 min-h-full space-y-6">
+                    <p className="text-mediumGrey heading-l">This board is empty. Create a new column to get started.</p>
+                    <button onClick={editBoard} className="heading-m btn-primary py-3.5 px-4">+ Add New Column</button>
+                </div>
+              </div>
         )}
-        </div>
-      </div>
+
+        {addColumModal && (
+          <Board mode="edit" onClose={()=>toggleModal('add_task')} />
+        )}
+       {viewSubtaskModal && (
+          <SubTasks onClose={()=>toggleModal('view_subtask')} changeModal={(modal:string)=>toggleModal(modal)} task={currentSubtask} />
+      )}
+        {editTask && (
+              <AddTask onClose={() => toggleModal('edit_task')} mode="edit" toEdit={currentSubtask}/>
+        )}
+        {deleteTask && (
+          <Delete type="task" title={currentSubtask.title} onClose={()=>toggleModal('delete_task')} />
+        )}
+        
+      </>
   );
 }

@@ -53,15 +53,14 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
     }
 
     return (
-        <nav className="fixed left-0 top-0 bottom-0 h-screen">
-            <div className={`flex flex-col pr-6 bg-white dark:bg-darkGrey fixed w-[300px] duration-300 transition-[left] border-r border-lightLines dark:border-darkLines h-screen  ${isOpen ? 'left-0 mr-[300px]' : '-left-80 mr-0'}`}>
-                <div className="pl-8 pt-8">
-                    <div className="logo w-full mb-[54px] dark:hidden"></div>
-                    <div className="dark-logo w-full mb-[54px] hidden dark:block"></div>
+        <>
+        <nav className={`fixed transition-transform duration-300 ease-in-out z-20 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+            <div className="h-screen hidden sm:flex flex-col pr-6 bg-white dark:bg-darkGrey sm:w-[261px] lg:w-[300px]  border-r border-lightLines dark:border-darkLines">
+                <div className="pl-8 pt-[15px] pb-[19px">
                     <p className="uppercase text-mediumGrey text-xs/[15px] tracking-[2.4px] font-bold" >All boards (8)</p>
                 </div>
                 
-                <div className="max-h-[70vh] h-full overflow-y-scroll mt-5">
+                <div className="overflow-y-scroll max-h-screen mt-5">
                     {columns.map(({_id,text}) => {
                         return <ColumnNav text={text} isActive={currentColumn === text ? true : false} changeColumn={ () => changeColumn(_id) } key={_id}/>
                     })}
@@ -72,26 +71,29 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
                 </div>
                 
                 
-            <div>    
-                {isOpen &&
-                    <>
-                    <ThemeToggler />
-                        <button onClick={toggleSidebar} className="w-full mb-8 flex items-center gap-2.5 text-mediumGrey pl-8 py-4 hover:bg-lightBg dark:hover:bg-white hover:text-primaryPurple rounded-r-full">
-                        <EyeCloseIcon />
-                        <span className="heading-m font-bold text-[15px]/[18px]">Hide Sidebar</span>
-                    </button>
-                    </>
-                    }
-                {!isOpen && <button onClick={toggleSidebar} className="fixed bottom-0 left-0 w-14 flex items-center justify-center mb-8 py-5 bg-primaryPurple text-white hover:bg-lightPurple rounded-r-full">
-                    <span className="sr-only">Click this button to open side bar</span>
-                    <EyeIcon />
-                </button>}
+                <div className="mt-auto mb-32">    
+                    {isOpen &&
+                        <>
+                        <ThemeToggler />
+                            <button onClick={toggleSidebar} className="w-full flex items-center gap-2.5 text-mediumGrey pl-8 py-4 hover:bg-lightBg dark:hover:bg-white hover:text-primaryPurple rounded-r-full">
+                            <EyeCloseIcon />
+                            <span className="heading-m font-bold text-[15px]/[18px]">Hide Sidebar</span>
+                        </button>
+                        </>
+                        }
                 </div>
             </div>
 
-            {addBoardModal && (
-                <Board type="add" onClose={closeModal}/>
-            )}
+           
         </nav>
+        <button onClick={toggleSidebar} className="z-10 hidden fixed bottom-0 left-0 w-14 sm:flex items-center justify-center mb-8 py-5 bg-primaryPurple text-white hover:bg-lightPurple rounded-r-full">
+            <span className="sr-only">Click this button to open side bar</span>
+            <EyeIcon />
+        </button>
+   
+        {addBoardModal && (
+                <Board mode="add" onClose={closeModal}/>
+            )}
+    </>
     );
 } 
