@@ -36,7 +36,7 @@ export default function Select({ options, label, selected, onSelect}: props) {
             )}
             <div className="relative group" onMouseLeave={()=>setDropdownOpen(false)}>
                 <button onClick={toggleDropdown} role="combobox" id="select" value="Select" aria-controls="listbox" aria-haspopup="listbox" aria-expanded="false" className="peer capitalize border border-[#828FA340] px-4 py-2 rounded-md body-l">
-                    {selected }
+                    {selected || "Select status"}
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4 text-primaryPurple">
                         <path  d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>

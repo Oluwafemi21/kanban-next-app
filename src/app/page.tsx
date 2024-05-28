@@ -228,7 +228,6 @@ export default function Home() {
 
   const doThis = (task: Task) => {
     setSubTask(task)
-    console.log(task)
     setSubtaskModal(true)
   }
 

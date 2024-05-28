@@ -77,14 +77,7 @@ export default function SubTasks({ task, onClose, changeModal }: props) {
                             return (
                                 <Checkbox key={index} label={title} id={'checkbox' + index} checked={isCompleted} handleCheck={(e)=>toggleStatus(e,index)}/>
                          )
-                        })}
-                        <ul>
-                        {subtask.subtasks.map(({title,isCompleted},index) => {
-                            return (
-                                <li key={index}>Test title: {title} - Test Status: { isCompleted ? 'true' : 'false' }</li>
-                         )
-                    })}</ul>
-                    
+                        })}                  
                 </div>
             </div>
             <Select label="Current Status" options={options} selected={status} onSelect={(option)=> updateStatus(option)} />

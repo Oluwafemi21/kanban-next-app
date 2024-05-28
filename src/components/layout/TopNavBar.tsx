@@ -78,7 +78,7 @@ export default function TopNavBar({ open }: propType) {
                         <button onClick={toggleDropdown} role="combobox" aria-controls="listbox" aria-haspopup="listbox" tabIndex={0} aria-expanded="false">
                             <Image src={moreInfo} alt="More info button" />
                         </button>
-                        <ul role="listbox" id="listbox" className={`drop-shadow bg-white dark:bg-darkBg transition-[top,display] duration-300 ease-in-out rounded-md absolute z-20 text-white space-y-4 right-6 w-[192px] top-20 max-h-36 will-change-auto p-4 ${isDropdownOpen ? 'block will-change-transform': 'hidden' }`}>
+                        <ul role="listbox" id="listbox" className={`drop-shadow bg-white dark:bg-darkBg transition-[top,display] duration-300 ease-in-out rounded-md absolute z-20 text-white space-y-4 right-6 w-[192px] top-16 lg:top-20 max-h-36 will-change-auto p-4 ${isDropdownOpen ? 'block will-change-transform': 'hidden' }`}>
                             <li role="listitem" onClick={()=>handleSelect('edit')} className="body-l capitalize w-full cursor-pointer snap-start text-mediumGrey hover:text-primaryPurple dark:hover:text-white">Edit Board</li>
                             <li role="listitem" onClick={() => handleSelect('delete')} className="text-danger hover:text-lightRed body-l capitalize w-full cursor-pointer">
                              Delete Board
