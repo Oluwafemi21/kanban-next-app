@@ -50,20 +50,22 @@ export default function SubTasks({ task, onClose, changeModal }: props) {
 
 
     return (
-        <>
+        
             <Modal id="toggle_subtask" onClose={onClose} >
-            <div className="flex items-center">
-                <h2 className="heading-l grow capitalize">{subtask.title}</h2>
-                <div className="group relative">
-                    <button onClick={toggleDropdown} role="combobox" aria-controls="listbox2" aria-haspopup="listbox" tabIndex={0} aria-expanded="false">
+            <div className="flex items-center justify-between">
+                <h2 className="heading-l  capitalize">{subtask.title}</h2>
+                <div className="group relative" tabIndex={1}>
+                    <button type="button" onClick={toggleDropdown} role="combobox" aria-controls="listbox2" aria-haspopup="listbox" aria-expanded="false">
                         <Image src={moreInfo} alt="More info button" />
                     </button>
-                    <ul role="listbox" id="listbox2" className={`drop-shadow bg-white dark:bg-darkBg transition-[top,display] duration-300 ease-in-out rounded-md fixed z-20 text-white space-y-4 w-[192px] max-h-36 will-change-auto p-4 ${dropdown ? 'block will-change-transform': 'hidden' }`}>
-                        <li role="listitem" onClick={()=>handleSelect('edit')} className="body-l capitalize w-full cursor-pointer snap-start text-mediumGrey hover:text-primaryPurple dark:hover:text-white">Edit Task</li>
-                        <li role="listitem" onClick={() => handleSelect('delete')} className="text-danger hover:text-lightRed body-l capitalize w-full cursor-pointer">
-                            Delete Task
-                        </li>
-                    </ul>
+                        {dropdown && (
+                            <ul role="listbox" id="listbox2" className="drop-shadow bg-white dark:bg-darkBg transition-[top,display] duration-300 ease-in-out rounded-md absolute z-40 text-white space-y-4 w-[192px] max-h-36 p-4 top-10 hidden group-focus-within:block group-focus:block -left-24">
+                            <li role="listitem" onClick={()=>handleSelect('edit')} className="body-l capitalize w-full cursor-pointer snap-start text-mediumGrey hover:text-primaryPurple dark:hover:text-white">Edit Task</li>
+                            <li role="listitem" onClick={() => handleSelect('delete')} className="text-danger hover:text-lightRed body-l capitalize w-full cursor-pointer">
+                                Delete Task
+                            </li>
+                        </ul>
+                    )}
                 </div>
             </div>
             {task?.description && <p className="my-6 text-mediumGrey body-l dark:text-white">
@@ -82,6 +84,6 @@ export default function SubTasks({ task, onClose, changeModal }: props) {
             </div>
             <Select label="Current Status" options={options} selected={status} onSelect={(option)=> updateStatus(option)} />
             </Modal>  
-        </>
+        
     )
 }

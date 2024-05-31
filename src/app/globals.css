@@ -44,11 +44,12 @@
   button {
     @apply transition duration-150 ease-in
   }
-  .modal-box{
-    @apply bg-white dark:bg-darkGrey rounded max-w-lg w-full max-h-[90vh] overflow-y-scroll p-8 space-y-6
-    }
+  
   .modal{
-    @apply fixed z-30 inset-0 bg-darkBg/70 lg:w-full px-4 h-full flex items-center justify-center transition-all duration-200
+    @apply fixed z-30 inset-0 bg-darkBg/70 lg:w-full px-4 h-full transition-all duration-200 flex items-center justify-center
+  }
+  .modal-box{
+    @apply bg-white dark:bg-darkGrey rounded max-w-lg w-full max-h-[90vh] p-8 space-y-6
   }
   input,textarea,button#select{
     @apply outline-none hover:border-primaryPurple hover:focus:border-inherit focus:outline-none focus:ring-[2px] focus:ring-primaryPurple ring-offset-0
@@ -63,6 +64,9 @@
   overflow-x: scroll; /* Enable horizontal scrolling */
 }
 
+/* .modal-box{
+  @apply relative z-40 bg-white dark:bg-darkGrey rounded max-w-lg w-full max-h-[90vh] overflow-y-auto p-8 space-y-6
+  } */
 .task-card{
   box-shadow: 0px 4px 6px 0px #364E7E1A;
 }
@@ -124,6 +128,7 @@ body {
     width: 3px;
     height: 1px;
     transition: all;
+    padding-left: 12px; 
 }
 
 ::-webkit-scrollbar-track {

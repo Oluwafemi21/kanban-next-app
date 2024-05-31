@@ -21,10 +21,6 @@ export default function TopNavBar({ open }: propType) {
     const [isDropdownOpen, setDropdownOpen] = useState(false)
     const [showEditModal,setShowEditModal] = useState(false)
     const [showDeleteModal,setShowDeleteModal] = useState(false)
-    
-    const showDropDown = () => {
-        console.log('dropdown showing')
-    }
    
     const showModal = () => {
         setTaskModalState(true)
@@ -35,10 +31,6 @@ export default function TopNavBar({ open }: propType) {
         setShowEditModal(false)
         setShowDeleteModal(false)
     }
-
-    const handleClick = () => {
-        console.log('modal closed')
-    };
 
     const toggleDropdown = () => {
         setDropdownOpen(!isDropdownOpen)
@@ -61,29 +53,31 @@ export default function TopNavBar({ open }: propType) {
                     </div>
                     <div className="transition-[margin-left] flex items-center justify-center gap-3">
                         <Image src={logo} alt="Kanban management app logo" className="md:hidden w-auto"/>
-                        <div className="flex items-center gap-[9px] px-2" onClick={showDropDown}>
+                        <div className="flex items-center gap-[9px] px-2">
                             <span className="text-black dark:text-white text-xl md:text-2xl font-bold">Platform Launch</span>
-                            <button>
+                            <button type="button">
                                 <Image src={chevronDown} alt="Arrow facing down" className="md:hidden" />
                             </button>
                         </div>
                     </div>
                 </div>
                 <div className="flex items-center gap-6 md:pr-8">
-                    <button onClick={showModal} className="btn btn-primary heading-m px-[18px] py-2.5 md:px-[25px] md:pt-[15px] md:pb-3.5">
+                    <button onClick={showModal} className="btn btn-primary heading-m px-[18px] py-2.5 md:px-[25px] md:pt-[15px] md:pb-3.5" type="button">
                         <span className="hidden md:block">+ Add New Task</span>
                         <AddIcon styling="md:hidden"/>
                     </button>
-                    <div className="group">
-                        <button onClick={toggleDropdown} role="combobox" aria-controls="listbox" aria-haspopup="listbox" tabIndex={0} aria-expanded="false">
+                    <div className="group relative" tabIndex={1}>
+                        <button type="button" onClick={toggleDropdown} role="combobox" aria-controls="listbox" aria-haspopup="listbox" aria-expanded="false">
                             <Image src={moreInfo} alt="More info button" />
                         </button>
-                        <ul role="listbox" id="listbox" className={`drop-shadow bg-white dark:bg-darkBg transition-[top,display] duration-300 ease-in-out rounded-md absolute z-20 text-white space-y-4 right-6 w-[192px] top-16 lg:top-20 max-h-36 will-change-auto p-4 ${isDropdownOpen ? 'block will-change-transform': 'hidden' }`}>
+                        {isDropdownOpen && (
+                            <ul role="listbox" id="listbox" className="drop-shadow bg-white dark:bg-darkBg transition-[top,display] duration-300 ease-in-out rounded-md absolute z-20 text-white space-y-4 w-[192px] top-8 lg:top-12 right-0 max-h-36 p-4 hidden group-focus:block group-focus-within:block">
                             <li role="listitem" onClick={()=>handleSelect('edit')} className="body-l capitalize w-full cursor-pointer snap-start text-mediumGrey hover:text-primaryPurple dark:hover:text-white">Edit Board</li>
                             <li role="listitem" onClick={() => handleSelect('delete')} className="text-danger hover:text-lightRed body-l capitalize w-full cursor-pointer">
                              Delete Board
                             </li>
                         </ul>
+                        )}
                     </div>
                 </div>
             </header>

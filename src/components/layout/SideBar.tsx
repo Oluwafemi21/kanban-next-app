@@ -64,7 +64,7 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
                     {columns.map(({_id,text}) => {
                         return <ColumnNav text={text} isActive={currentColumn === text ? true : false} changeColumn={ () => changeColumn(_id) } key={_id}/>
                     })}
-                    <button onClick={showModal} className="hover:bg-primaryPurple/10 w-full text-primaryPurple pl-6 py-4 rounded-r-full flex items-center gap-4">
+                    <button onClick={showModal} className="hover:bg-primaryPurple/10 w-full text-primaryPurple pl-6 py-4 rounded-r-full flex items-center gap-4" type="button">
                         <BoardIcon />
                         <span className="heading-m capitalize">+ create new board</span>
                     </button>
@@ -75,7 +75,7 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
                     {isOpen &&
                         <>
                         <ThemeToggler />
-                            <button onClick={toggleSidebar} className="w-full flex items-center gap-2.5 text-mediumGrey pl-8 py-4 hover:bg-lightBg dark:hover:bg-white hover:text-primaryPurple rounded-r-full">
+                            <button type="button" onClick={toggleSidebar} className="w-full flex items-center gap-2.5 text-mediumGrey pl-8 py-4 hover:bg-lightBg dark:hover:bg-white hover:text-primaryPurple rounded-r-full">
                             <EyeCloseIcon />
                             <span className="heading-m font-bold text-[15px]/[18px]">Hide Sidebar</span>
                         </button>
@@ -86,7 +86,7 @@ export default function SideBar({ isOpen, toggleSidebar }: propType) {
 
            
         </nav>
-        <button onClick={toggleSidebar} className="z-10 hidden fixed bottom-0 left-0 w-14 sm:flex items-center justify-center mb-8 py-5 bg-primaryPurple text-white hover:bg-lightPurple rounded-r-full">
+        <button type="button" onClick={toggleSidebar} className="z-10 hidden fixed bottom-0 left-0 w-14 sm:flex items-center justify-center mb-8 py-5 bg-primaryPurple text-white hover:bg-lightPurple rounded-r-full">
             <span className="sr-only">Click this button to open side bar</span>
             <EyeIcon />
         </button>

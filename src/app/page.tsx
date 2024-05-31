@@ -6,6 +6,9 @@ import SubTasks from "@/components/Modals/SubTasks";
 import AddTask from "@/components/Modals/AddTask";
 import Delete from "@/components/Modals/Delete";
 import Board from "@/components/Modals/Board";
+import { Field, FieldArray, Form, Formik, FormikHelpers, FormikProps } from "formik";
+import BaseInput from "@/components/BaseInput";
+import LoadingButton from "@/components/LoadingButton";
 
 
 export default function Home() {
@@ -231,7 +234,6 @@ export default function Home() {
     setSubtaskModal(true)
   }
 
-
   return (
    <>
         {
@@ -253,7 +255,7 @@ export default function Home() {
               <div className="p-4 md:p-6">
                 <div className="flex flex-col items-center justify-center max-w-xs md:max-w-[459px] lg:max-w-none text-center mx-auto gap-5 min-h-full space-y-6">
                     <p className="text-mediumGrey heading-l">This board is empty. Create a new column to get started.</p>
-                    <button onClick={editBoard} className="heading-m btn-primary py-3.5 px-4">+ Add New Column</button>
+                    <button type="button" onClick={editBoard} className="heading-m btn-primary py-3.5 px-4">+ Add New Column</button>
                 </div>
               </div>
         )}
@@ -270,7 +272,6 @@ export default function Home() {
         {deleteTask && (
           <Delete type="task" title={currentSubtask.title} onClose={()=>toggleModal('delete_task')} />
         )}
-        
       </>
   );
 }
