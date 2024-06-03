@@ -23,9 +23,9 @@ export default function ThemeToggler() {
     if (!hasMounted) return null;
 
     return (
-        <div className="ml-6 mb-2 flex items-center justify-center gap-6 py-3.5 bg-lightBg dark:bg-darkBg rounded">
+        <div className="ml-4 sm:ml-6 mb-2 flex items-center justify-center gap-6 py-3.5 bg-lightBg dark:bg-darkBg rounded">
             <Image src={sunIcon} alt="Light Theme Icon"/>
-            <button className="bg-primaryPurple hover:bg-lightPurple rounded-full h-5 w-10 p-[3px]" onClick={changeTheme}>
+            <button type="button" className="bg-primaryPurple hover:bg-lightPurple rounded-full h-5 w-10 p-[3px] ring-primaryPurple" onClick={changeTheme}>
                 <p className={` bg-white rounded-full h-full w-3.5 aspect-square transition ${theme === 'dark' ? 'translate-x-5' : 'translate-x-0'}`} />
             </button>
             <Image src={moonIcon} alt="Dark Theme Icon" />

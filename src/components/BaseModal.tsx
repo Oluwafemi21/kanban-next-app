@@ -8,12 +8,12 @@ type ModalProps = {
 };
 
 export default function Modal({ id, children, onClose }: ModalProps) {
-    const printThis = (e:React.MouseEvent<Element, MouseEvent>) => {
+    const preventPropagation = (e:React.MouseEvent<Element, MouseEvent>) => {
         e.stopPropagation()
     }
     return (
         <div id={id} className="modal" onClick={onClose}>
-            <div className="modal-box" onClick={(e)=> printThis(e)}>
+            <div className="modal-box" onClick={(e)=> preventPropagation(e)}>
                 {children}
             </div>
         </div>

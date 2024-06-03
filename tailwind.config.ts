@@ -33,6 +33,9 @@ const config: Config = {
       backgroundColor: {
         'dark': "#20212C",
         'light':"#F4F7FD"
+      },
+      screens: {
+        "sm":"500px"
       }
     },
   },
